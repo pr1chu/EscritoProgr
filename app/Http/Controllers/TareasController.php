@@ -9,6 +9,19 @@ use Illumiate\Database\Eloquent\ModelNotFoundException;
 
 class TareasController extends Controller
 {
+
+    public function Buscar($id){
+
+        try{
+            $tarea = Tareas::findOrFail($id);
+            return tareas; 
+        }
+    
+        catch(ModelNotFoundException $exception){
+            return response()->json(['error' => 'Tarea no encontrada'], 404);
+        }
+    } 
+
     public function buscarPorTitulo ($titulo) {
         try {
             $tituloDeTarea = Tareas::where('titulo', $titulo)->get();
