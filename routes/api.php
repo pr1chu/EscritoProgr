@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/{id}', [TareasController::class, 'Buscar']);
+
+Route::get('/{titulo}', [TareasController::class, 'buscarPorTitulo']);
+
+Route::get('/{autor}', [TareasController::class, 'buscarPorAutor']);
+
+Route::get('/{estado}', [TareasController::class, 'buscarPorEstado']);
+
+
