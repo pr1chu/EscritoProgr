@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tareas;
 use Illuminate\Http\Request;
-use Illumiate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class TareasController extends Controller
@@ -14,7 +14,7 @@ class TareasController extends Controller
 
         try{
             $tarea = Tareas::findOrFail($id);
-            return tareas; 
+            return tarea; 
         }
     
         catch(ModelNotFoundException $exception){
