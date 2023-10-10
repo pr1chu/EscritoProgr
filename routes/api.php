@@ -20,10 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/{id}', [TareasController::class, 'Buscar']);
 
-Route::get('/{titulo}', [TareasController::class, 'buscarPorTitulo']);
+Route::get('/titulo/{titulo}', [TareasController::class, 'buscarPorTitulo']);
 
-Route::get('/{autor}', [TareasController::class, 'buscarPorAutor']);
+Route::get('/autor/{autor}', [TareasController::class, 'buscarPorAutor']);
 
-Route::get('/{estado}', [TareasController::class, 'buscarPorEstado']);
+Route::get('/estado/{estado}', [TareasController::class, 'buscarPorEstado']);
 
 

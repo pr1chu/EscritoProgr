@@ -12,7 +12,7 @@ class TareasTest extends TestCase
     public function testBuscarTareaExistente()
     {
         $tarea = factory(Tareas::class)->create();
-        $response = $this->get('/tareas/' . $tarea->id);
+        $response = $this->get('/api/' . $tarea->id);
         $response->assertStatus(200);
         $response->assertJson($tarea->toArray());
     }
@@ -20,7 +20,7 @@ class TareasTest extends TestCase
     public function testBuscarTareaNoExistente()
     {
       
-        $response = $this->get('/tareas/9999'); 
+        $response = $this->get('/api/9999'); 
         $response->assertStatus(404);
         $response->assertJson(['error' => 'Tarea no encontrada']);
     }
@@ -28,14 +28,14 @@ class TareasTest extends TestCase
     public function testBuscarPorTituloExistente()
     {
         $tarea = factory(Tareas::class)->create();
-        $response = $this->get('/tareas/titulo/' . $tarea->titulo);
+        $response = $this->get('/api/titulo/' . $tarea->titulo);
         $response->assertStatus(200);
         $response->assertJson([$tarea->toArray()]);
     }
 
     public function testBuscarPorTituloNoExistente()
     {
-        $response = $this->get('/tareas/titulo/TituloInexistente');
+        $response = $this->get('/api/titulo/TituloInexistente');
         $response->assertStatus(404);
         $response->assertJson(['error' => 'Tareas no encontradas']);
     }
@@ -43,14 +43,14 @@ class TareasTest extends TestCase
     public function testBuscarPorAutorExistente()
     {
         $tarea = factory(Tareas::class)->create();
-        $response = $this->get('/tareas/autor/' . $tarea->autor);
+        $response = $this->get('/api/autor/' . $tarea->autor);
         $response->assertStatus(200);
         $response->assertJson([$tarea->toArray()]);
     }
 
     public function testBuscarPorAutorNoExistente()
     {
-        $response = $this->get('/tareas/autor/AutorInexistente');
+        $response = $this->get('/api/autor/AutorInexistente');
         $response->assertStatus(404);
         $response->assertJson(['error' => 'Tareas no encontradas']);
     }
@@ -58,14 +58,14 @@ class TareasTest extends TestCase
     public function testBuscarPorEstadoExistente()
     {
         $tarea = factory(Tareas::class)->create();
-        $response = $this->get('/tareas/estado/' . $tarea->estado);
+        $response = $this->get('/api/estado/' . $tarea->estado);
         $response->assertStatus(200);
         $response->assertJson([$tarea->toArray()]);
     }
 
     public function testBuscarPorEstadoNoExistente()
     {
-        $response = $this->get('/tareas/estado/EstadoInexistente');
+        $response = $this->get('/api/estado/EstadoInexistente');
         $response->assertStatus(404);
         $response->assertJson(['error' => 'Tareas no encontradas']);
     }
